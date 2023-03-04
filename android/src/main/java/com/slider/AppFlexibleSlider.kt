@@ -6,21 +6,29 @@ import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.os.Build
-import android.os.Bundle
-import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.annotation.Px
-import androidx.core.graphics.withTranslation
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import com.google.android.material.shape.MaterialShapeDrawable
-import kr.co.prnd.slider.util.*
 import kotlin.math.abs
 import kotlin.math.max
 
+public inline fun Canvas.withTranslation(
+  x: Float = 0.0f,
+  y: Float = 0.0f,
+  block: Canvas.() -> Unit
+) {
+  val checkpoint = save()
+  translate(x, y)
+  try {
+    block()
+  } finally {
+    restoreToCount(checkpoint)
+  }
+}
 
 class AppFlexibleSlider @JvmOverloads constructor(
   context: Context,
@@ -612,23 +620,6 @@ class AppFlexibleSlider @JvmOverloads constructor(
 
   override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
     updateTrackWidth(w)
-  }
-
-  override fun onSaveInstanceState(): Parcelable = bundleOf(
-    KEY_SUPER_STATE to super.onSaveInstanceState(),
-    KEY_VALUES to valuesCached.toTypedArray().toFloatArray()
-  )
-
-  override fun onRestoreInstanceState(state: Parcelable) {
-    when (state) {
-      is Bundle -> {
-        super.onRestoreInstanceState(state.getParcelable(KEY_SUPER_STATE))
-        (state.getFloatArray(KEY_VALUES))
-          ?.toList()
-          ?.let { values -> setValues(values) }
-      }
-      else -> super.onRestoreInstanceState(state)
-    }
   }
 
   private fun List<Float>.normalized(): List<Float> = if (size < 2) {
