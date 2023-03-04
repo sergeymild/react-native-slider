@@ -12,6 +12,6 @@ class SliderPackage : ReactPackage {
   }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-    return listOf(SliderViewManager())
+    return listOf(RangeSliderViewManager(), SliderViewManager())
   }
 }

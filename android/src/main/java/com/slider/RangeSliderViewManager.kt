@@ -9,11 +9,11 @@ import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
 
-class SliderViewManager : SimpleViewManager<SliderHostView>() {
-  override fun getName() = "SliderView"
+class RangeSliderViewManager : SimpleViewManager<RangeSliderHostView>() {
+  override fun getName() = "RangeSliderView"
 
-  override fun createViewInstance(reactContext: ThemedReactContext): SliderHostView {
-    return SliderHostView(reactContext)
+  override fun createViewInstance(reactContext: ThemedReactContext): RangeSliderHostView {
+    return RangeSliderHostView(reactContext)
   }
 
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any>? {
@@ -23,7 +23,7 @@ class SliderViewManager : SimpleViewManager<SliderHostView>() {
   }
 
   @ReactProp(name = "params")
-  fun setParams(view: SliderHostView, params: ReadableMap) {
+  fun setParams(view: RangeSliderHostView, params: ReadableMap) {
     view.slider.setValues(
       arrayListOf(params.getDouble("minimumValue").toFloat(), params.getDouble("maximumValue").toFloat()),
       params.getDouble("from").toFloat(),
