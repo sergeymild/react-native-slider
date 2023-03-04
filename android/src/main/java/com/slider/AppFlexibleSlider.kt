@@ -22,19 +22,19 @@ import kotlin.math.abs
 import kotlin.math.max
 
 
-
-
-
-
-
 class AppFlexibleSlider @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null,
   defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-  private val inactiveTrackPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
-  private val activeTrackPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
+  private val inactiveTrackPaint: Paint = Paint().apply {
+    this.style = Paint.Style.STROKE
+    this.strokeCap = Paint.Cap.ROUND
+  }
+  private val activeTrackPaint: Paint = Paint().apply {
+    this.style = Paint.Style.STROKE
+  }
 
   private val inactiveTickPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
   private val activeTickPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
@@ -58,7 +58,7 @@ class AppFlexibleSlider @JvmOverloads constructor(
   private var trackWidth: Int = 0
   private var trackHeight: Int = 0
   private var trackSidePadding: Int = 0
-  private var minimumRange: Float = 10f
+  private var minimumRange: Float = 0f
 
   private val scaledTouchSlop: Int = ViewConfiguration.get(context).scaledTouchSlop
 
@@ -411,20 +411,19 @@ class AppFlexibleSlider @JvmOverloads constructor(
     }
   }
 
-  private fun drawThumbs(canvas: Canvas, width: Int, top: Float) =
-    values.forEachIndexed { index, value ->
-      val isActive = index == activeThumbIdx
-      val radius = if (isActive) activeThumbRadius else inactiveThumbRadius
-      val x = trackSidePadding + (value.normalized() * width) - radius
-      val y = top - radius
-      canvas.withTranslation(x, y) {
-        if (isActive) {
-          activeThumbDrawable.draw(canvas)
-        } else {
-          inactiveThumbDrawable.draw(canvas)
-        }
+  private fun drawThumbs(canvas: Canvas, width: Int, top: Float) {
+    val isActive = activeThumbIdx == 1
+    val radius = if (isActive) activeThumbRadius else inactiveThumbRadius
+    val x = trackSidePadding + (values.last().normalized() * width) - radius
+    val y = top - radius
+    canvas.withTranslation(x, y) {
+      if (isActive) {
+        activeThumbDrawable.draw(canvas)
+      } else {
+        inactiveThumbDrawable.draw(canvas)
       }
     }
+  }
 
   @SuppressLint("ClickableViewAccessibility")
   override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -496,7 +495,7 @@ class AppFlexibleSlider @JvmOverloads constructor(
     if (activeThumbIdx != NO_INDEX) {
       return true
     }
-    activeThumbIdx = 0
+    activeThumbIdx = 1
     val touchValue: Float = positionToValue(touchPosition)
     val touchX: Float = valueToX(touchValue)
 

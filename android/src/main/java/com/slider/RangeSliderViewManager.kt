@@ -60,6 +60,10 @@ class RangeSliderViewManager : SimpleViewManager<RangeSliderHostView>() {
       view.slider.isTickVisible = false
     }
 
+    if (params.hasKey("minimumRange")) {
+      view.slider.minimumRange = params.getDouble("minimumRange").toFloat()
+    }
+
     val trackColorActive = ColorPropConverter.getColor(params.getDouble("trackColorActive"), view.context)
     view.slider.setTrackColorActive(ColorStateList.valueOf(trackColorActive))
 

@@ -25,9 +25,8 @@ class SliderViewManager : SimpleViewManager<SliderHostView>() {
   @ReactProp(name = "params")
   fun setParams(view: SliderHostView, params: ReadableMap) {
     view.slider.setValues(
-      arrayListOf(params.getDouble("minimumValue").toFloat(), params.getDouble("maximumValue").toFloat()),
-      params.getDouble("from").toFloat(),
-      params.getDouble("to").toFloat()
+      values = arrayListOf(0f, params.getDouble("maximumValue").toFloat()),
+      valueTo = params.getDouble("to").toFloat()
     )
 
     val padding = PixelUtil.toPixelFromDIP(20f)

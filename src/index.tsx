@@ -14,11 +14,33 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-type SliderProps = {
+export type OnRangeValueChange = { from: number; to: number };
+export type OnValueChange = { to: number };
+
+type RangeSliderProps = {
   params: {
     maximumValue: number;
     minimumValue: number;
     from: number;
+    to: number;
+    trackHeight: number;
+    thumbStrokeWidth: number;
+    thumbStrokeColor: string;
+    thumbFillColor: string;
+    thumbElevation: number;
+    thumbRadius: number;
+    tickColor?: string;
+    trackColorActive: string;
+    trackColorInactive: string;
+    minimumRange?: number;
+  };
+  style: ViewStyle;
+  onValueChange?: (event: NativeSyntheticEvent<OnRangeValueChange>) => void;
+};
+
+type SliderProps = {
+  params: {
+    maximumValue: number;
     to: number;
     trackHeight: number;
     thumbStrokeWidth: number;
@@ -34,11 +56,9 @@ type SliderProps = {
   onValueChange?: (event: NativeSyntheticEvent<OnValueChange>) => void;
 };
 
-export type OnValueChange = { from: number; to: number };
-
 const _RangeSliderView =
   UIManager.getViewManagerConfig('RangeSliderView') != null
-    ? requireNativeComponent<SliderProps>('RangeSliderView')
+    ? requireNativeComponent<RangeSliderProps>('RangeSliderView')
     : () => {
         throw new Error(LINKING_ERROR);
       };
@@ -50,7 +70,7 @@ const _SliderView =
         throw new Error(LINKING_ERROR);
       };
 
-export const RangeSliderView: React.FC<SliderProps> = memo((props) => {
+export const RangeSliderView: React.FC<RangeSliderProps> = memo((props) => {
   return (
     <_RangeSliderView
       style={props.style}

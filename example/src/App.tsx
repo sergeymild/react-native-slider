@@ -1,17 +1,17 @@
 import * as React from 'react';
+import { useCallback } from 'react';
 
 import { NativeSyntheticEvent, StyleSheet, View } from 'react-native';
 import {
-  OnValueChange,
+  OnRangeValueChange,
   RangeSliderView,
   SliderView,
 } from 'react-native-slider';
-import { useCallback } from 'react';
 
 export default function App() {
   const onValueChange = useCallback(
-    (event: NativeSyntheticEvent<OnValueChange>) => {
-      //console.log('[App.]', event.nativeEvent.from, event.nativeEvent.to);
+    (event: NativeSyntheticEvent<OnRangeValueChange>) => {
+      console.log('[App.]', event.nativeEvent.from, event.nativeEvent.to);
     },
     []
   );
@@ -25,6 +25,7 @@ export default function App() {
           minimumValue: 18,
           from: 10,
           to: 50,
+          minimumRange: 20,
           trackHeight: 2,
           thumbStrokeWidth: 2,
           thumbStrokeColor: '#4B4C4D',
@@ -38,11 +39,9 @@ export default function App() {
       />
 
       <SliderView
-        onValueChange={onValueChange}
+        onValueChange={(value) => console.log('[App.]', value.nativeEvent.to)}
         params={{
           maximumValue: 98,
-          minimumValue: 18,
-          from: 10,
           to: 50,
           trackHeight: 2,
           thumbStrokeWidth: 2,

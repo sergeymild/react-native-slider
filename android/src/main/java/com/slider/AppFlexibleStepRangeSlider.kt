@@ -97,8 +97,13 @@ class AppFlexibleStepRangeSlider @JvmOverloads constructor(
   defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-  private val inactiveTrackPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
-  private val activeTrackPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
+  private val inactiveTrackPaint: Paint = Paint().apply {
+    this.style = Paint.Style.STROKE
+    this.strokeCap = Paint.Cap.ROUND
+  }
+  private val activeTrackPaint: Paint = Paint().apply {
+    this.style = Paint.Style.STROKE
+  }
 
   private val inactiveTickPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
   private val activeTickPaint: Paint = Paint().apply { this.style = Paint.Style.STROKE }
@@ -122,7 +127,7 @@ class AppFlexibleStepRangeSlider @JvmOverloads constructor(
   private var trackWidth: Int = 0
   private var trackHeight: Int = 0
   private var trackSidePadding: Int = 0
-  private var minimumRange: Float = 10f
+  var minimumRange: Float = 0f
 
   private val scaledTouchSlop: Int = ViewConfiguration.get(context).scaledTouchSlop
 
