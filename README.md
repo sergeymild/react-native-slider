@@ -5,17 +5,58 @@ S
 ## Installation
 
 ```sh
-npm install react-native-slider
+"react-native-slider":"sergeymild/react-native-slider#0.2.0"
 ```
 
 ## Usage
 
 ```js
-import { SliderView } from "react-native-slider";
+import { SliderView, RangeSliderView } from "react-native-slider";
 
 // ...
 
-<SliderView color="tomato" />
+ const onValueChange = useCallback(
+   (event: NativeSyntheticEvent<OnRangeValueChange>) => {
+     console.log('[App.]', event.nativeEvent.from, event.nativeEvent.to);
+   },[]
+ );
+
+  <RangeSliderView
+    onValueChange={onValueChange}
+    params={{
+      maximumValue: 98,
+      minimumValue: 18,
+      from: 10,
+      to: 50,
+      minimumRange: 20,
+      trackHeight: 2,
+      thumbStrokeWidth: 2,
+      thumbStrokeColor: '#4B4C4D',
+      thumbFillColor: 'white',
+      thumbElevation: 4,
+      thumbRadius: 12,
+      trackColorInactive: 'red',
+      trackColorActive: 'yellow',
+    }}
+    style={styles.box}
+   />
+
+   <SliderView
+     onValueChange={(event) => console.log('[App.]', value.event.to)}
+     params={{
+       maximumValue: 98,
+       to: 50,
+       trackHeight: 2,
+       thumbStrokeWidth: 2,
+       thumbStrokeColor: '#4B4C4D',
+       thumbFillColor: 'white',
+       thumbElevation: 4,
+       thumbRadius: 12,
+       trackColorInactive: 'red',
+       trackColorActive: 'yellow',
+     }}
+     style={styles.box}
+   />
 ```
 
 ## Contributing
