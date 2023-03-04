@@ -197,8 +197,7 @@ class AppFlexibleStepRangeSlider @JvmOverloads constructor(
   }
 
   fun interface OnValueChangeListener {
-
-    fun onValueChange(from: Float, to: Float, state: ValueChangeState)
+    fun onValueChange(activeThumbIdx: Int, from: Float, to: Float, state: ValueChangeState)
   }
 
   init {
@@ -412,7 +411,7 @@ class AppFlexibleStepRangeSlider @JvmOverloads constructor(
   }
 
   private fun notifyValueChanged(state: ValueChangeState) = listeners.forEach { listener ->
-    listener.onValueChange(valueFrom, valueTo, state)
+    listener.onValueChange(activeThumbIdx, valueFrom, valueTo, state)
   }
 
   override fun onDraw(canvas: Canvas) {

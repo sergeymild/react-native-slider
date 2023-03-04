@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E555C0D2413F4C50049A1A2 /* Slider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Slider.m */; };
-		F4FF95D7245B92E800C19C63 /*  Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  Slider.swift */; };
+		9208CEB729B34B8C00555046 /* SliderViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9208CEB529B34B8C00555046 /* SliderViewManager.m */; };
+		9208CEB829B34B8C00555046 /* SliderViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208CEB629B34B8C00555046 /* SliderViewManager.swift */; };
+		9208CEBC29B34B9A00555046 /* RangeSeekSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208CEB929B34B9900555046 /* RangeSeekSliderDelegate.swift */; };
+		9208CEBD29B34B9A00555046 /* RangeSeekSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208CEBA29B34B9A00555046 /* RangeSeekSlider.swift */; };
+		9208CEBE29B34B9A00555046 /* TapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208CEBB29B34B9A00555046 /* TapticEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +28,12 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libSlider.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSlider.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5891CC2AC0600A0062D /* Slider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Slider.m; sourceTree = "<group>"; };
+		9208CEB529B34B8C00555046 /* SliderViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewManager.m; sourceTree = "<group>"; };
+		9208CEB629B34B8C00555046 /* SliderViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderViewManager.swift; sourceTree = "<group>"; };
+		9208CEB929B34B9900555046 /* RangeSeekSliderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSeekSliderDelegate.swift; sourceTree = "<group>"; };
+		9208CEBA29B34B9A00555046 /* RangeSeekSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSeekSlider.swift; sourceTree = "<group>"; };
+		9208CEBB29B34B9A00555046 /* TapticEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapticEngine.swift; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* Slider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Slider-Bridging-Header.h"; sourceTree = "<group>"; };
-		F4FF95D6245B92E800C19C63 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +58,12 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				F4FF95D6245B92E800C19C63 /* Slider.swift */,
-				B3E7B5891CC2AC0600A0062D /* Slider.m */,
 				F4FF95D5245B92E700C19C63 /* Slider-Bridging-Header.h */,
+				9208CEB529B34B8C00555046 /* SliderViewManager.m */,
+				9208CEB629B34B8C00555046 /* SliderViewManager.swift */,
+				9208CEBA29B34B9A00555046 /* RangeSeekSlider.swift */,
+				9208CEB929B34B9900555046 /* RangeSeekSliderDelegate.swift */,
+				9208CEBB29B34B9A00555046 /* TapticEngine.swift */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,8 +125,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FF95D7245B92E800C19C63 /* Slider.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* Slider.m in Sources */,
+				9208CEBD29B34B9A00555046 /* RangeSeekSlider.swift in Sources */,
+				9208CEBC29B34B9A00555046 /* RangeSeekSliderDelegate.swift in Sources */,
+				9208CEBE29B34B9A00555046 /* TapticEngine.swift in Sources */,
+				9208CEB729B34B8C00555046 /* SliderViewManager.m in Sources */,
+				9208CEB829B34B8C00555046 /* SliderViewManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

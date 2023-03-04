@@ -37,6 +37,7 @@ class RangeSliderHostView(context: Context) : FrameLayout(context),
   }
 
   override fun onValueChange(
+    activeThumbIdx: Int,
     from: Float,
     to: Float,
     state: AppFlexibleStepRangeSlider.ValueChangeState

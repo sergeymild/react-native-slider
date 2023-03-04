@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: '90%',
+    width: '100%',
     height: 60,
     marginVertical: 20,
   },

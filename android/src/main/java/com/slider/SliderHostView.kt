@@ -7,11 +7,9 @@ import com.facebook.react.bridge.ReactContext
 import com.facebook.react.uimanager.events.RCTEventEmitter
 
 fun SliderHostView.onValueChange(
-  from: Float,
   to: Float
 ) {
   val event = Arguments.createMap()
-  event.putDouble("from", from.toDouble())
   event.putDouble("to", to.toDouble())
   val reactContext = context as ReactContext
   reactContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(id, "onValueChange", event)
@@ -20,6 +18,7 @@ fun SliderHostView.onValueChange(
 class SliderHostView(context: Context) : FrameLayout(context),
   AppFlexibleSlider.OnValueChangeListener {
   var slider: AppFlexibleSlider
+  var previousValue = Float.MIN_VALUE
 
   init {
     slider = AppFlexibleSlider(context)
@@ -41,6 +40,10 @@ class SliderHostView(context: Context) : FrameLayout(context),
     to: Float,
     state: AppFlexibleSlider.ValueChangeState
   ) {
-    onValueChange(from, to)
+    if (previousValue == to) {
+      return
+    }
+    previousValue = to
+    onValueChange(to)
   }
 }
