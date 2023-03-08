@@ -40,6 +40,7 @@ type RangeSliderProps = {
 
 type SliderProps = {
   params: {
+    minimumValue: number;
     maximumValue: number;
     to: number;
     trackHeight: number;

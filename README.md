@@ -44,6 +44,7 @@ import { SliderView, RangeSliderView } from "react-native-slider";
    <SliderView
      onValueChange={(event) => console.log('[App.]', value.event.to)}
      params={{
+       minimumValue: 18,
        maximumValue: 98,
        to: 50,
        trackHeight: 2,

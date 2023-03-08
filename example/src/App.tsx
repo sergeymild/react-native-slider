@@ -41,6 +41,7 @@ export default function App() {
       <SliderView
         onValueChange={(value) => console.log('[App.]', value.nativeEvent.to)}
         params={{
+          minimumValue: 30,
           maximumValue: 98,
           to: 50,
           trackHeight: 2,

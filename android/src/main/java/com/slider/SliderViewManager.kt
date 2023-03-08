@@ -25,7 +25,7 @@ class SliderViewManager : SimpleViewManager<SliderHostView>() {
   @ReactProp(name = "params")
   fun setParams(view: SliderHostView, params: ReadableMap) {
     view.slider.setValues(
-      values = arrayListOf(0f, params.getDouble("maximumValue").toFloat()),
+      values = arrayListOf(params.getDouble("minimumValue").toFloat(), params.getDouble("maximumValue").toFloat()),
       valueTo = params.getDouble("to").toFloat()
     )
 
