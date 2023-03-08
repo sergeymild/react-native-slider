@@ -29,7 +29,7 @@ class SliderViewManager : SimpleViewManager<SliderHostView>() {
       valueTo = params.getDouble("to").toFloat()
     )
 
-    val padding = PixelUtil.toPixelFromDIP(20f)
+    val padding = PixelUtil.toPixelFromDIP(0f)
     view.slider.setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
 
     val thumbStroke = PixelUtil.toPixelFromDIP(params.getDouble("thumbStrokeWidth"))
