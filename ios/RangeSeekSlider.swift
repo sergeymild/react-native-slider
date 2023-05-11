@@ -243,6 +243,7 @@ import UIKit
     // UIFeedbackGenerator
     private var previousStepMinValue: CGFloat?
     private var previousStepMaxValue: CGFloat?
+    private weak var parentScrollView: UIScrollView?
 
     // strong reference needed for UIAccessibilityContainer
     // see http://stackoverflow.com/questions/13462046/custom-uiview-not-showing-accessibility-on-voice-over
@@ -302,6 +303,12 @@ import UIKit
         let isTouchingRightHandle: Bool = rightHandle.frame.insetBy(dx: insetExpansion, dy: insetExpansion).contains(touchLocation)
 
         guard isTouchingLeftHandle || isTouchingRightHandle else { return false }
+        var sp = parentScrollView ?? superview
+        while (sp != nil && !(sp is UIScrollView)) {
+            sp = sp?.superview
+        }
+        parentScrollView = sp as? UIScrollView
+        parentScrollView?.isScrollEnabled = false
 
 
         // the touch was inside one of the handles so we're definitely going to start movign one of them. But the handles might be quite close to each other, so now we need to find out which handle the touch was closest too, and activate that one.
@@ -324,6 +331,7 @@ import UIKit
     }
 
     open override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        parentScrollView?.isScrollEnabled = true
         guard handleTracking != .none else { return false }
 
         let location: CGPoint = touch.location(in: self)
@@ -536,8 +544,9 @@ import UIKit
     }
 
     private func updateHandlePositions() {
-        leftHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMinValue),
-                                      y: sliderLine.frame.midY)
+        leftHandle.position = CGPoint(
+            x: xPositionAlongLine(for: selectedMinValue),
+            y: sliderLine.frame.midY)
 
         rightHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMaxValue),
                                        y: sliderLine.frame.midY)

@@ -5,7 +5,7 @@ S
 ## Installation
 
 ```sh
-"react-native-slider":"sergeymild/react-native-slider#0.2.0"
+"react-native-slider":"sergeymild/react-native-slider#0.4.0"
 ```
 
 ## Usage
