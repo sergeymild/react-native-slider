@@ -41,11 +41,16 @@ class SliderView : UIView {
     
     @objc
     func setParams(_ params: [String: Any]) {
-        slider.maxValue = CGFloat(params["maximumValue"] as! Double)
+        slider.maxValue = RCTConvert.cgFloat(params["maximumValue"])
 
         slider.selectedMaxValue = RCTConvert.cgFloat(params["to"])
+
+        slider.lineHeight = RCTConvert.cgFloat(params["trackHeight"])
         
-        slider.lineHeight = CGFloat(params["trackHeight"] as! Double)
+        if params["step"] != nil {
+            slider.enableStep = true
+            slider.step = RCTConvert.cgFloat(params["step"])
+        }
         
         slider.colorBetweenHandles = RCTConvert.uiColor(params["trackColorActive"])
         slider.tintColor = RCTConvert.uiColor(params["trackColorInactive"])
@@ -97,6 +102,11 @@ class RangeSliderView : UIView {
         slider.minDistance = CGFloat(params["minimumRange"] as! Double)
         
         slider.lineHeight = CGFloat(params["trackHeight"] as! Double)
+        
+        if params["step"] != nil {
+            slider.enableStep = true
+            slider.step = RCTConvert.cgFloat(params["step"])
+        }
         
         slider.colorBetweenHandles = RCTConvert.uiColor(params["trackColorActive"])
         slider.tintColor = RCTConvert.uiColor(params["trackColorInactive"])

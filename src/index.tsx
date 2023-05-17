@@ -23,6 +23,7 @@ type RangeSliderProps = {
     minimumValue: number;
     from: number;
     to: number;
+    step?: number;
     trackHeight: number;
     thumbStrokeWidth: number;
     thumbStrokeColor: string;
@@ -43,6 +44,7 @@ type SliderProps = {
     minimumValue: number;
     maximumValue: number;
     to: number;
+    step?: number;
     trackHeight: number;
     thumbStrokeWidth: number;
     thumbStrokeColor: string;
